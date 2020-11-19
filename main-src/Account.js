@@ -1,2 +1,2 @@
 double Balance = 0;
-int accNumber;
+int accNumber = 0;
