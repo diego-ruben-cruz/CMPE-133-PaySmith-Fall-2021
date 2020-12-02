@@ -36,15 +36,13 @@ session_start();
 	<!-- Favicon  -->
     <link rel="icon" href="images/logo.png" >
     <style>
-    body{
-      background-color: black;
-    }
+  html { width: 100%; height:100%; overflow:hidden; }
     main-navigation .navigation-logo img {
         height: auto;
         position: absolute;
         left: 0;
     }
-
+body {background-color: black;}
 
     </style>
 </head>
