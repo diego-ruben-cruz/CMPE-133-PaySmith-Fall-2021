@@ -1,15 +1,52 @@
 <?php
 session_start();
 ?>
+
 <?php
+if (isset($_SESSION['id'])){
+  echo "Already Logged In";
+  echo" Redirecting to the home page now...";
+  header("refresh:1;url=menu.php");
+}
+
+$logged_in = false;
+if (isset($_POST["email"]) && isset($_POST["password"])) {
+if ($_POST["email"] && $_POST["password"]) {
+$email = $_POST["email"];
+$password = $_POST["password"];
+// create connection
 $conn = mysqli_connect("localhost", "root", "", "appusers");
 // check connection
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
 // register user
+$sql = "SELECT password,id,fname FROM customers WHERE email = '$email'";
+$results = mysqli_query($conn, $sql);
+if ($results) {
+$row = mysqli_fetch_assoc($results);
+if ($row["password"] === $password) {
+$logged_in = true;
+$_SESSION["name"] = $row["fname"];
+$_SESSION["id"] = $row["id"];
+ echo "Welcome " . $_POST["name"];
+$sql = "SELECT * FROM customers";
+$results = mysqli_query($conn, $sql);
+header("refresh:5;url=menu.php");
 
+} else {
+echo "user name or password incorrect;";
+}
+} else {
+echo mysqli_error($conn);
+}
+mysqli_close($conn); // close connection
+} else {
+echo "Nothing was submitted.";
+}
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +67,7 @@ die("Connection failed: " . mysqli_connect_error());
 	<meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>PaySmith - Free website App Landing Page Template</title>
+    <title>PaySmith - Free Mobile App Landing Page Template</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
@@ -72,6 +109,15 @@ body {
   background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
 }
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -300px 0 0 -300px;
+  width:500px;
+  height:500px;
+}
+.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
 
 input {
   width: 100%;
@@ -98,276 +144,19 @@ main-navigation .navigation-logo img {
     position: absolute;
     left: 0;
 }
-.dropdown {
-  float: right;
-  overflow: hidden;
-  position: relative;
-  right: 50px;
-  font-size: 23px;
-}
-
-.dropdown .dropbtn {
-  font-size: 18px;
-  border: none;
-  outline: none;
-  color: black;
-  padding:20px 20px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 20px 20px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.container {
-  min-height: 80vh;
-  background-color: black;
-}
-.header {
-  height: 30px;
-  width: 100%;
-}
-h1 {
-  margin: 0;
-  text-align: center;
-  font-family: "heading";
-  padding-top: 10px;
-}
-.budget-section {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  width: 100%;
-  min-height: 160px;
-  font-weight: 900;
-}
-.budget-list {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  width: 100%;
-  height: 70px;
-  font-size: 20px;
-}
-.exp-amount {
-  color: #b80c09;
-}
-.amount {
-  color: #317b22;
-}
-.col {
-  width: 40%;
-  text-align: center;
-  text-transform: capitalize;
-}
-.col p {
-  font-size: 40px;
-  padding-top: 5px;
-  margin: 0;
-}
-.toggle {
-  position: fixed;
-  right: 0;
-  bottom: 18px;
-}
-.toggle button {
-  border: none;
-  border-radius: 600px;
-  background: #04458f;
-  padding: 14px 20px;
-  color: #ffffff;
-  font-size: 30px;
-  margin: 10px 50px 0 0;
-  cursor: pointer;
-}
-/* modal form */
-.budget-form {
-  width: 100%;
-  min-height: 200px;
-}
-form {
-  margin: 10px 0 20px 10px;
-  min-height: 100px;
-}
-input {
-  width: 60%;
-  padding: 8px 0;
-  border-radius: 6px;
-  border: 1px solid gray;
-  margin: 20px 0;
-  padding-left: 5px;
-  color: #495057;
-}
-.budget-list .exp p {
-  color: #b80c09;
-  font-size: 18px;
-}
-#displayExpenses {
-  width: 100%;
-  display: none;
-}
-.expValue {
-  display: flex;
-  justify-content: space-around;
-  height: 40px;
-  font-weight: 900;
-  text-align: center;
-}
-#expTitleName {
-  width: 40%;
-}
-#expValueAmount {
-  width: 40%;
-}
-#edite_delete {
-  width: 40%;
-}
-#edite_delete img {
-  cursor: pointer;
-}
-#edite_delete button {
-  margin-left: 1px;
-  background: none;
-  border: none;
-}
-.budget-form button {
-  background: rgb(1, 83, 1);
-  border: none;
-  border-radius: 6px;
-  color: #ffffff;
-  padding: 10px 40px;
-  cursor: pointer;
-  text-transform: capitalize;
-  font-size: 16px;
-  font-weight: 400;
-}
-#bug {
-  font-size: 14px;
-  background: none;
-  color: #04458f;
-  margin: 0px 0px 15px 10px;
-  text-align: justify;
-  padding: 0;
-}
-#expense-form {
-  width: 100%;
-  display: none;
-}
-#editForm {
-  display: none;
-  width: 100%;
-}
-#editForm button {
-  background: #b80c09;
-  border: none;
-  border-radius: 6px;
-  color: #ffffff;
-  padding: 10px 30px;
-  cursor: pointer;
-  text-transform: capitalize;
-  font-size: 16px;
-  font-weight: 400;
-}
-.expense-form button {
-  background: #b80c09;
-  border: none;
-  border-radius: 6px;
-  color: #ffffff;
-  padding: 10px 30px;
-  cursor: pointer;
-  text-transform: capitalize;
-  font-size: 16px;
-  font-weight: 400;
-}
-/* The Modal (background) */
-.modal {
-  display: block;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  animation-name: fadeIn;
-  animation-duration: 0.4s;
-  text-transform: capitalize;
-  font-weight: 600;
-}
-
-/* Modal Content */
-.modal-content {
-  position: fixed;
-  top: 20%;
-  left: 25%;
-  background-color: #fefefe;
-  width: 50%;
-  min-height: 40px;
-  animation-name: slideIn;
-  animation-duration: 0.4s;
-}
-
-/* The Close Button */
-.close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #000;
-}
-.modal-header {
-  padding: 2px 16px;
-  border-bottom: 2px solid gray;
-}
-.modal-body {
-  padding: 2px 16px;
-}
-
-/* Add Animation */
-@keyframes slideIn {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
     </style>
 
 </head>
+<body data-spy="scroll" data-target=".fixed-top">
 
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
     <!-- end of preloader -->
 
 
@@ -389,87 +178,30 @@ input {
         <div class="collapse navbar-collapse" id="navbarsExampleDefault"  >
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="">Crowdfund</a>
+                    <a class="nav-link page-scroll" href="#header">HOME <span class="sr-only">(current)</span></a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="">Transfer</a>
+                    <a class="nav-link page-scroll" href="signup.php" >Signup</a>
                 </li>
-
-
             </ul>
         </div>
     </nav> <!-- end of navbar -->
     <!-- end of navbar -->
+    <br>
 
-<br>
-<br>
-<br>
-    <div class="dropdown >
-        <?php (isset($_SESSION['id'])) ?>
-            <button class="dropbtn"> Welcome <?php echo $_SESSION['name']; ?> </button>
-    </div>
-    </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <div class="container">
-      <div >
-        <h1>Budget</h1>
-
-      </div>
+    <div class="login">
       <br>
-      <div class="budget-section">
-        <div class="budget col col-md col-sm">
-          <h2>budget</h2>
-          <br>
-          <img src="images/money-bag.svg" width="40" alt=""  />
-          <br>
-          <p class="amount">$ <span id="budgetAmount">0</span></p>
-          
-        </div>
-        <div class="expenses col col-md col-sm">
-          <h2>expenses</h2>
-          <br>
-          <img src="images/accounting.svg" width="40" alt=""  />
-          <br>
-          <p class="exp-amount">$ <span id="expensesAmount">0</span></p>
-        </div>
-        <div class="balance col col-md col-sm">
-          <h2>balance</h2>
-          <br>
-          <img src="images/law.svg" width="40" alt=""  />
-          <br>
-          <p class="amount bala">$ <span id="balanceAmount">0</span></p>
-        </div>
-      </div>
-      <div id="displayExpenses">
-        <div class="budget-list">
-          <div class="col">
-            <h4>expense title</h4>
-          </div>
-          <div class="col">
-            <h4>expense value</h4>
-          </div>
-          <div class="col"></div>
-        </div>
-        <div id="expValue"></div>
-      </div>
-    </div>
-    <div class="toggle">
-      <button id="myBtn" type="button">+</button>
-    </div>
-    <?php
-        if(isset($_POST['save'])){
-            $sql = "INSERT INTO appusers (budget)
-            VALUES ('".$_POST["budget"]."')";
-             $result = mysqli_query($conn,$sql);
-        }
-        ?>
 
-
-
-
+  <h1>Login</h1>
+  <br>
+  <br>
+    <form method="post">
+      <input type="text" name="email" placeholder="Email" required="required" />
+        <input type="password" name="password" placeholder="Password" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+    </form>
+</div>
 
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
