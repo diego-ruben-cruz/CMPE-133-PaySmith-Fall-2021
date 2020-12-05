@@ -85,9 +85,7 @@ body {background-color: black;}
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="signup.php" >Signup</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link page-scroll" href="logout.php" >Logout</a>
-                </li>
+        
             </ul>
         </div>
     </nav> <!-- end of navbar -->

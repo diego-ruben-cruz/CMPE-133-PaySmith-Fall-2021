@@ -35,7 +35,7 @@ $results = mysqli_query($conn, $sql);
 header("refresh:5;url=menu.php");
 
 } else {
-echo "user name or password incorrect;";
+echo "Email or password incorrect;";
 }
 } else {
 echo mysqli_error($conn);

@@ -7,7 +7,7 @@ $conn = mysqli_connect("localhost", "root", "", "appusers");
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
-// register user
+
 
 ?>
 <!DOCTYPE html>
@@ -61,6 +61,8 @@ die("Connection failed: " . mysqli_connect_error());
 html { width: 100%; height:100%; overflow:hidden; }
 
 body {
+  margin: 0;
+  padding: 0;
   width: 100%;
   height:100%;
   font-family: 'Open Sans', sans-serif;
@@ -139,7 +141,8 @@ main-navigation .navigation-logo img {
 }
 .container {
   min-height: 80vh;
-  background-color: black;
+
+  width: 100%;
 }
 .header {
   height: 30px;
@@ -317,9 +320,9 @@ input {
 /* Modal Content */
 .modal-content {
   position: fixed;
-  top: 20%;
+  top: 40%;
   left: 25%;
-  background-color: #fefefe;
+  background-color: Grey;
   width: 50%;
   min-height: 40px;
   animation-name: slideIn;
@@ -388,13 +391,18 @@ input {
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault"  >
             <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link page-scroll" href="menu.php">Budget Mangement</a>
+              </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="">Crowdfund</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="">Transfer</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="logout.php" >Logout</a>
+                </li>
 
             </ul>
         </div>
@@ -415,7 +423,7 @@ input {
   <br>
   <div class="container">
       <div >
-        <h1>Budget</h1>
+        <h1>Budget Management</h1>
 
       </div>
       <br>
@@ -426,7 +434,7 @@ input {
           <img src="images/money-bag.svg" width="40" alt=""  />
           <br>
           <p class="amount">$ <span id="budgetAmount">0</span></p>
-          
+
         </div>
         <div class="expenses col col-md col-sm">
           <h2>expenses</h2>
@@ -459,14 +467,57 @@ input {
     <div class="toggle">
       <button id="myBtn" type="button">+</button>
     </div>
-    <?php
-        if(isset($_POST['save'])){
-            $sql = "INSERT INTO appusers (budget)
-            VALUES ('".$_POST["budget"]."')";
-             $result = mysqli_query($conn,$sql);
-        }
-        ?>
 
+    <!-- The Modal -->
+       <div id="myModal" class="modal">
+         <!-- Modal content -->
+         <div class="modal-content">
+           <div class="modal-header">
+             <span class="close">&times;</span>
+             <h2>Budget Form</h2>
+           </div>
+           <div class="modal-body">
+             <div class="budget-form" id="budgetform">
+               <form id="addForm">
+                 <label for=""> Make a budget</label> <br />
+                 <input type="number" id="number" /> <br />
+                 <button type="submit">Add Budget</button>
+               </form>
+             </div>
+
+             <div class="expense-form" id="expense-form">
+               <form action="" id="expForm">
+                 <div class="">
+                   <label for="">please enter your expense</label> <br />
+                   <input type="text" id="expName" />
+                 </div>
+                 <div class="">
+                   <label for="">please enter expense amount</label> <br />
+                   <input type="number" id="expNumber" />
+                 </div>
+                 <button type="submit" id="submitExpen">Add expense</button>
+               </form>
+               <button onclick="callBudget()" id="bug">
+                 Back to add budget ->
+               </button>
+             </div>
+
+             <div class="edit-form" id="editForm">
+               <form action="" id="saveEdit">
+                 <div class="">
+                   <label for="">Edit your expense</label> <br />
+                   <input type="text" id="editExpName" />
+                 </div>
+                 <div class="">
+                   <label for="">Edit expense amount</label> <br />
+                   <input type="number" id="editExpNumber" />
+                 </div>
+                 <button type="submit">Save changes</button>
+               </form>
+             </div>
+           </div>
+         </div>
+       </div>
 
 
 
@@ -481,5 +532,6 @@ input {
     <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="js/main.js"></script>
 </body>
 </html>
