@@ -123,7 +123,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
 
               <li><a href="user-profile.php"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
-               <li><a href="change-password.php"><em class="fa fa-clone">&nbsp;</em> Change Password</a></li>
+               
   <li><a href="logout.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 
           </ul>
