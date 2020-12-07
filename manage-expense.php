@@ -123,7 +123,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
 
                 <li><a href="user-profile.php"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
-                 
+
     <li><a href="logout.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 
             </ul>
@@ -168,7 +168,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
                 </tr>
               </thead>
               <?php
-              $userid=$_SESSION['detsuid'];
+              $userid=$_SESSION['id'];
 $ret=mysqli_query($conn,"select * from transactions where UserID='$userid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {

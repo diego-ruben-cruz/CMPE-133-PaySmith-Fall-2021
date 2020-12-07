@@ -17,7 +17,7 @@ if(isset($_POST['submit']))
     $dateexpense=$_POST['dateexpense'];
      $item=$_POST['item'];
      $costitem=$_POST['costitem'];
-    $query=mysqli_query($conn, "insert into transactions (UserID,date,item,cost) value('$id','$dateexpense','$item','$costitem')");
+    $query=mysqli_query($conn, "insert into transactions (UserID,date,item,cost) value('$userid','$dateexpense','$item','$costitem')");
 if($query){
 echo "<script>alert('Expense has been added');</script>";
 echo "<script>window.location.href='manage-expense.php'</script>";
@@ -123,7 +123,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
 
               <li><a href="user-profile.php"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
-               
+
   <li><a href="logout.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 
           </ul>

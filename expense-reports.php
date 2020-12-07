@@ -105,7 +105,7 @@ if (strlen($_SESSION['id']==0)) {
 
 
               <li><a href="user-profile.php"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
-  <li><a href="logout.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+    <li><a href="logout.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 
           </ul>
       </div>
