@@ -54,7 +54,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span></button>
-                <a class="navbar-brand" href="menu.php"><span>PaySmithr</span></a>
+                <a class="navbar-brand" href="menu.php"><span>PaySmith</span></a>
 
             </div>
 
