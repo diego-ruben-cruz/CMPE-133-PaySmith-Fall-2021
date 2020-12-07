@@ -16,8 +16,7 @@ if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
 // register user
-$sql = "INSERT INTO customers (fname, lname, email, password) VALUES ('$fname','$lname','$email', '$password');
- INSERT INTO transactions (email) VALUES ('$email')";
+$sql = "INSERT INTO customers (fname, lname, email, password) VALUES ('$fname','$lname','$email', '$password')";
 $results = mysqli_multi_query($conn, $sql);
 if ($results) {
 echo "The user has been added.";

@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-if (isset($_SESSION['id'])){
-  echo "Already Logged In";
-  header("refresh:5;url=menu.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
