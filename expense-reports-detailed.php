@@ -18,7 +18,7 @@ if (strlen($_SESSION['id']==0)) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Daily Expense Tracker || Expense Report</title>
+	<title>Pay Smith || Expense Report</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -36,7 +36,7 @@ if (strlen($_SESSION['id']==0)) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span></button>
-                <a class="navbar-brand" href="menu.php"><span>PaySmithr</span></a>
+                <a class="navbar-brand" href="menu.php"><span>PaySmith</span></a>
 
             </div>
 
