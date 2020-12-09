@@ -30,7 +30,7 @@ if (strlen($_SESSION['id']==0)) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span></button>
-
+                        <a class="navbar-brand" href="menu.php"><span>PaySmith</span></a>
 
             </div>
 
