@@ -31,7 +31,7 @@ if ($row["password"] === $password) {
 $logged_in = true;
 $_SESSION["name"] = $row["fname"];
 $_SESSION["id"] = $row["id"];
- echo "Welcome " . $_POST["name"];
+ echo "Welcome ";
 $sql = "SELECT * FROM customers";
 $results = mysqli_query($conn, $sql);
 header("refresh:5;url=menu.php");
