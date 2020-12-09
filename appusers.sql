@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2020 at 10:22 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- Generation Time: Dec 08, 2020 at 05:58 PM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,19 +32,17 @@ CREATE TABLE `customers` (
   `fname` varchar(255) NOT NULL,
   `lname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `balance` varchar(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `fname`, `lname`, `email`, `password`) VALUES
-(6, 'hung', 'nguyen', 'hung@gmail.com', '123'),
-(9, 'aaa', 'bbb', 'c@gmail.com', '123'),
-(10, 'd', 'e', 'g@gmail.com', '123'),
-(13, 'e', 'd', '1@gmail.com', '123'),
-(14, 'abc', 'bcd', 'ghf@gmail.com', '123');
+INSERT INTO `customers` (`id`, `fname`, `lname`, `email`, `password`, `balance`) VALUES
+(1, 'hung', 'nguyen', 'hung@gmail.com', '123', '0'),
+(2, 'Diego', 'Cruz', 'diego.cruz@sjsu.edu', 'TempPassword', '0');
 
 -- --------------------------------------------------------
 
@@ -66,7 +63,9 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `UserID`, `date`, `item`, `cost`) VALUES
-(13, 0, '2020-12-06', 'rent ', 100);
+(18, 9, '2020-12-07', 'water', 100),
+(26, 2, '2020-12-08', 'Food', 20),
+(27, 2, '2020-12-08', 'Pen with EI', 5);
 
 --
 -- Indexes for dumped tables
@@ -92,13 +91,13 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
