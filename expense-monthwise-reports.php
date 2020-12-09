@@ -18,7 +18,7 @@ if (strlen($_SESSION['id']==0)) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PaySmith || Month-to-Month Transaction Report</title>
+	<title>PaySmith || Monthwise Expense Report</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -45,11 +45,9 @@ if (strlen($_SESSION['id']==0)) {
     </nav>
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
           <div class="profile-sidebar">
-              <!--
-                  <div class="profile-userpic">
+              <div class="profile-userpic">
                   <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
               </div>
-              -->
               <div class="profile-usertitle">
                   <?php
   $uid=$_SESSION['id'];
@@ -71,14 +69,14 @@ if (strlen($_SESSION['id']==0)) {
 
 
               <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-                  <em class="fa fa-navicon">&nbsp;</em>Transactions <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  <em class="fa fa-navicon">&nbsp;</em>Expenses <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                   </a>
                   <ul class="children collapse" id="sub-item-1">
                       <li><a class="" href="add-expense.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Add Transaction
+                          <span class="fa fa-arrow-right">&nbsp;</span> Add Expenses
                       </a></li>
                       <li><a class="" href="manage-expense.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Edit Transaction(s)
+                          <span class="fa fa-arrow-right">&nbsp;</span> Manage Expenses
                       </a></li>
 
                   </ul>
@@ -86,17 +84,17 @@ if (strlen($_SESSION['id']==0)) {
               </li>
 
     <li class="parent "><a data-toggle="collapse" href="#sub-item-2">
-                  <em class="fa fa-navicon">&nbsp;</em>Transaction Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  <em class="fa fa-navicon">&nbsp;</em>Expense Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                   </a>
                   <ul class="children collapse" id="sub-item-2">
                       <li><a class="" href="expense-datewise-reports.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Day-to-Day
+                          <span class="fa fa-arrow-right">&nbsp;</span> Daywise Expenses
                       </a></li>
                       <li><a class="" href="expense-monthwise-reports.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Month-to-Month
+                          <span class="fa fa-arrow-right">&nbsp;</span> Monthwise Expenses
                       </a></li>
                       <li><a class="" href="expense-yearwise-reports.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Year-to-Year
+                          <span class="fa fa-arrow-right">&nbsp;</span> Yearwise Expenses
                       </a></li>
 
                   </ul>
@@ -119,7 +117,7 @@ if (strlen($_SESSION['id']==0)) {
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Month-to-Month Transaction Report</li>
+				<li class="active">Monthwise Expense Report</li>
 			</ol>
 		</div><!--/.row-->
 
@@ -132,7 +130,7 @@ if (strlen($_SESSION['id']==0)) {
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">Month-to-Month Transaction Report</div>
+					<div class="panel-heading">Monthwise Expense Report</div>
 					<div class="panel-body">
 						<p style="font-size:16px; color:red" align="center"> <?php if($msg){
     echo $msg;
