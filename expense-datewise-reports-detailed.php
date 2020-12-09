@@ -6,6 +6,7 @@ $conn = mysqli_connect("localhost", "root", "", "appusers");
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
+
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
   } else{
@@ -29,6 +30,21 @@ if (strlen($_SESSION['id']==0)) {
 
 </head>
 <body>
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span></button>
+                <a class="navbar-brand" href="menu.php"><span>PaySmith</span></a>
+
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <div class="profile-sidebar">
             <!--
