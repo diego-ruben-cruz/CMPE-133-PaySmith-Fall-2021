@@ -6,7 +6,7 @@ $conn = mysqli_connect("localhost", "root", "", "appusers");
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
-if (strlen($_SESSION['detsuid']==0)) {
+if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
   } else{
 
