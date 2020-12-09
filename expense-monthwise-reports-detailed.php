@@ -106,7 +106,7 @@ if (strlen($_SESSION['id']==0)) {
 
 
               <li><a href="user-profile.php"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
-      
+
   <li><a href="logout.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 
           </ul>
@@ -153,7 +153,7 @@ $rtype=$_POST['requesttype'];
                                         </tr>
                                         </thead>
  <?php
-$userid=$_SESSION['detsuid'];
+$userid=$_SESSION['id'];
 $ret=mysqli_query($conn,"SELECT month(date) as rptmonth,year(date) as rptyear,SUM(cost) as totalmonth FROM transactions  where (date BETWEEN '$fdate' and '$tdate') && (UserID='$userid') group by month(date),year(date)");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
