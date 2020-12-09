@@ -1,25 +1,39 @@
 <?php
 session_start();
-error_reporting(0);
+
 $conn = mysqli_connect("localhost", "root", "", "appusers");
 // check connection
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
-
+error_reporting(0);
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
   } else{
 
+if(isset($_POST['submit']))
+  {
+  	$userid=$_SESSION['id'];
+    $dateexpense=$_POST['dateexpense'];
+     $item=$_POST['item'];
+     $costitem=$_POST['costitem'];
+    $query=mysqli_query($conn, "insert into crowdfund (UserID,date,crowdfundName,amount) value('$userid','$dateexpense','$item','$costitem')");
+if($query){
+echo "<script>alert('Crowdfund has been added');</script>";
+echo "<script>window.location.href='manage-crowdfund.php'</script>";
+} else {
+echo "<script>alert('Something went wrong. Please try again');</script>";
 
+}
 
+}
   ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PaySmith || Day-To-Day Transaction Report</title>
+	<title>Pay Smith || Add Expense</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -27,7 +41,10 @@ if (strlen($_SESSION['id']==0)) {
 
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 </head>
 <body>
   <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -86,6 +103,19 @@ if (strlen($_SESSION['id']==0)) {
 
               </li>
 
+              <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
+                  <em class="fa fa-navicon">&nbsp;</em> Crowdfund <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  </a>
+                  <ul class="children collapse" id="sub-item-3">
+                      <li><a class="" href="add-crowdfund.php">
+                          <span class="fa fa-arrow-right">&nbsp;</span> Add Crowdfund
+                      </a></li>
+                      <li><a class="" href="manage-crowdfund.php">
+                          <span class="fa fa-arrow-right">&nbsp;</span> Edit Crowdfund(s)
+                      </a></li>
+
+                  </ul>
+
     <li class="parent "><a data-toggle="collapse" href="#sub-item-2">
                   <em class="fa fa-navicon">&nbsp;</em>Transaction Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                   </a>
@@ -104,18 +134,7 @@ if (strlen($_SESSION['id']==0)) {
               </li>
 
 
-              <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
-                  <em class="fa fa-navicon">&nbsp;</em> Crowdfund <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-                  </a>
-                  <ul class="children collapse" id="sub-item-3">
-                      <li><a class="" href="add-crowdfund.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Add Crowdfund
-                      </a></li>
-                      <li><a class="" href="manage-crowdfund.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Edit Crowdfund(s)
-                      </a></li>
 
-                  </ul>
 
 
               <li><a href="user-profile.php"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
@@ -131,7 +150,7 @@ if (strlen($_SESSION['id']==0)) {
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Day-to-Day Transaction Report</li>
+				<li class="active">Expense</li>
 			</ol>
 		</div><!--/.row-->
 
@@ -144,29 +163,30 @@ if (strlen($_SESSION['id']==0)) {
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">Day-To-Day Transaction Report</div>
+					<div class="panel-heading">Expense</div>
 					<div class="panel-body">
 						<p style="font-size:16px; color:red" align="center"> <?php if($msg){
     echo $msg;
   }  ?> </p>
 						<div class="col-md-12">
 
-
-
-							<form role="form" method="post" action="expense-datewise-reports-detailed.php" name="bwdatesreport">
+							<form role="form" method="post" action="">
 								<div class="form-group">
-									<label>From Date</label>
-									<input class="form-control" type="date"  id="fromdate" name="fromdate" required="true">
+									<label>Crowdfund Date</label>
+									<input class="form-control" type="date" value="" name="dateexpense" required="true">
 								</div>
 								<div class="form-group">
-									<label>To Date</label>
-									<input class="form-control" type="date"  id="todate" name="todate" required="true">
+									<label> Crowdfund Name</label>
+									<input type="text" class="form-control" name="item" value="" required="true">
 								</div>
 
-
+								<div class="form-group">
+									<label>Amount</label>
+									<input class="form-control" type="text" value="" required="true" name="costitem">
+								</div>
 
 								<div class="form-group has-success">
-									<button type="submit" class="btn btn-primary" name="submit">Submit</button>
+									<button type="submit" class="btn btn-primary" name="submit">Add</button>
 								</div>
 
 
@@ -192,4 +212,4 @@ if (strlen($_SESSION['id']==0)) {
 
 </body>
 </html>
-<?php } ?>
+<?php }  ?>

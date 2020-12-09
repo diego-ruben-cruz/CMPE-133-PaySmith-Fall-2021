@@ -6,29 +6,46 @@ $conn = mysqli_connect("localhost", "root", "", "appusers");
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
-
 if (strlen($_SESSION['id']==0)) {
-  header('location:logout.php');
-  } else{
+header('location:logout.php');
+} else{
+
+//code deletion
+if(isset($_GET['delid']))
+{
+$rowid=intval($_GET['delid']);
+$query=mysqli_query($conn,"delete from crowdfund where id='$rowid'");
+if($query){
+echo "<script>alert('Record successfully deleted');</script>";
+echo "<script>window.location.href='manage-crowdfund.php'</script>";
+} else {
+echo "<script>alert('Something went wrong. Please try again');</script>";
+
+}
+
+}
 
 
-
-  ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PaySmith || Day-To-Day Transaction Report</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/datepicker3.css" rel="stylesheet">
-	<link href="css/styles2.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pay Smith || Manage Crowdfund</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/datepicker3.css" rel="stylesheet">
+<link href="css/styles2.css" rel="stylesheet">
 
-	<!--Custom Font-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+<!--Custom Font-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
 </head>
+<body>
 <body>
   <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -47,10 +64,10 @@ if (strlen($_SESSION['id']==0)) {
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
           <div class="profile-sidebar">
               <!--
-                  <div class="profile-userpic">
-                  <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
-              </div>
-              -->
+                <div class="profile-userpic">
+                <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+            </div>
+            -->
               <div class="profile-usertitle">
                   <?php
   $uid=$_SESSION['id'];
@@ -125,71 +142,84 @@ if (strlen($_SESSION['id']==0)) {
           </ul>
       </div>
 
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="#">
-					<em class="fa fa-home"></em>
-				</a></li>
-				<li class="active">Day-to-Day Transaction Report</li>
-			</ol>
-		</div><!--/.row-->
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="#">
+        <em class="fa fa-home"></em>
+      </a></li>
+      <li class="active">Crowdfund</li>
+    </ol>
+  </div><!--/.row-->
 
 
 
 
-		<div class="row">
-			<div class="col-lg-12">
+  <div class="row">
+    <div class="col-lg-12">
 
 
 
-				<div class="panel panel-default">
-					<div class="panel-heading">Day-To-Day Transaction Report</div>
-					<div class="panel-body">
-						<p style="font-size:16px; color:red" align="center"> <?php if($msg){
-    echo $msg;
-  }  ?> </p>
-						<div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Expense</div>
+        <div class="panel-body">
+          <p style="font-size:16px; color:red" align="center"> <?php if($msg){
+  echo $msg;
+}  ?> </p>
+          <div class="col-md-12">
 
+            <div class="table-responsive">
+          <table class="table table-bordered mg-b-0">
+            <thead>
+              <tr>
+                <th>S.NO</th>
+                <th>Crowdfund Name</th>
+                <th>Crowdfund Amount</th>
+                <th>Crowdfund Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <?php
+            $userid=$_SESSION['id'];
+$ret=mysqli_query($conn,"select * from crowdfund where UserID='$userid'");
+$cnt=1;
+while ($row=mysqli_fetch_array($ret)) {
 
+?>
+            <tbody>
+              <tr>
+                <td><?php echo $cnt;?></td>
 
-							<form role="form" method="post" action="expense-datewise-reports-detailed.php" name="bwdatesreport">
-								<div class="form-group">
-									<label>From Date</label>
-									<input class="form-control" type="date"  id="fromdate" name="fromdate" required="true">
-								</div>
-								<div class="form-group">
-									<label>To Date</label>
-									<input class="form-control" type="date"  id="todate" name="todate" required="true">
-								</div>
+                <td><?php  echo $row['crowdfundName'];?></td>
+                <td><?php  echo $row['amount'];?></td>
+                <td><?php  echo $row['date'];?></td>
+                <td><a href="manage-crowdfund.php?delid=<?php echo $row['id'];?>">Delete</a>
+              </tr>
+              <?php
+$cnt=$cnt+1;
+}?>
 
+            </tbody>
+          </table>
+        </div>
+          </div>
+        </div>
+      </div><!-- /.panel-->
+    </div><!-- /.col-->
 
-
-								<div class="form-group has-success">
-									<button type="submit" class="btn btn-primary" name="submit">Submit</button>
-								</div>
-
-
-								</div>
-
-							</form>
-						</div>
-					</div>
-				</div><!-- /.panel-->
-			</div><!-- /.col-->
-
-		</div><!-- /.row -->
-	</div><!--/.main-->
+  </div><!-- /.row -->
+</div><!--/.main-->
 
 <script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/chart.min.js"></script>
-	<script src="js/chart-data.js"></script>
-	<script src="js/easypiechart.js"></script>
-	<script src="js/easypiechart-data.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/custom.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/chart-data.js"></script>
+<script src="js/easypiechart.js"></script>
+<script src="js/easypiechart-data.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/custom.js"></script>
 
 </body>
 </html>
-<?php } ?>
+<?php }  ?>

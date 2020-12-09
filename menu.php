@@ -39,9 +39,11 @@ if (strlen($_SESSION['id']==0)) {
     </nav>
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
           <div class="profile-sidebar">
-              <div class="profile-userpic">
+              <!--
+                  <div class="profile-userpic">
                   <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
               </div>
+              -->
               <div class="profile-usertitle">
                   <?php
   $uid=$_SESSION['id'];
@@ -63,14 +65,14 @@ if (strlen($_SESSION['id']==0)) {
 
 
               <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-                  <em class="fa fa-navicon">&nbsp;</em>Expenses <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  <em class="fa fa-navicon">&nbsp;</em>Transactions <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                   </a>
                   <ul class="children collapse" id="sub-item-1">
                       <li><a class="" href="add-expense.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Add Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Add Transaction
                       </a></li>
                       <li><a class="" href="manage-expense.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Manage Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Edit Transaction(s)
                       </a></li>
 
                   </ul>
@@ -78,22 +80,36 @@ if (strlen($_SESSION['id']==0)) {
               </li>
 
     <li class="parent "><a data-toggle="collapse" href="#sub-item-2">
-                  <em class="fa fa-navicon">&nbsp;</em>Expense Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  <em class="fa fa-navicon">&nbsp;</em>Transaction Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                   </a>
                   <ul class="children collapse" id="sub-item-2">
                       <li><a class="" href="expense-datewise-reports.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Daywise Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Day-to-Day
                       </a></li>
                       <li><a class="" href="expense-monthwise-reports.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Monthwise Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Month-to-Month
                       </a></li>
                       <li><a class="" href="expense-yearwise-reports.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Yearwise Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Year-to-Year
                       </a></li>
 
                   </ul>
               </li>
 
+              <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
+                  <em class="fa fa-navicon">&nbsp;</em> Crowdfund <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  </a>
+                  <ul class="children collapse" id="sub-item-3">
+                      <li><a class="" href="add-crowdfund.php">
+                          <span class="fa fa-arrow-right">&nbsp;</span> Add Crowdfund
+                      </a></li>
+                      <li><a class="" href="manage-crowdfund.php">
+                          <span class="fa fa-arrow-right">&nbsp;</span> Edit Crowdfund(s)
+                      </a></li>
+
+                  </ul>
+
+              </li>
 
 
 
@@ -137,7 +153,7 @@ if (strlen($_SESSION['id']==0)) {
       $sum_today_expense=$result['todaysexpense'];
        ?>
 
-      						<h4>Today's Expense</h4>
+      						<h4>Today</h4>
       						<div class="easypiechart" id="easypiechart-blue" data-percent="<?php echo $sum_today_expense;?>" ><span class="percent"><?php if($sum_today_expense==""){
       echo "0";
       } else {
@@ -159,7 +175,7 @@ if (strlen($_SESSION['id']==0)) {
       $sum_yesterday_expense=$result1['yesterdayexpense'];
        ?>
       					<div class="panel-body easypiechart-panel">
-      						<h4>Yesterday's Expense</h4>
+      						<h4>Yesterday</h4>
       						<div class="easypiechart" id="easypiechart-orange" data-percent="<?php echo $sum_yesterday_expense;?>" ><span class="percent"><?php if($sum_yesterday_expense==""){
       echo "0";
       } else {
@@ -182,7 +198,7 @@ if (strlen($_SESSION['id']==0)) {
       $sum_weekly_expense=$result2['weeklyexpense'];
        ?>
       					<div class="panel-body easypiechart-panel">
-      						<h4>Last 7day's Expense</h4>
+      						<h4>Last 7 Days</h4>
       						<div class="easypiechart" id="easypiechart-teal" data-percent="<?php echo $sum_weekly_expense;?>"><span class="percent"><?php if($sum_weekly_expense==""){
       echo "0";
       } else {
@@ -205,7 +221,7 @@ if (strlen($_SESSION['id']==0)) {
       $sum_monthly_expense=$result3['monthlyexpense'];
        ?>
       					<div class="panel-body easypiechart-panel">
-      						<h4>Last 30day's Expenses</h4>
+      						<h4>Last 30 days</h4>
       						<div class="easypiechart" id="easypiechart-red" data-percent="<?php echo $sum_monthly_expense;?>" ><span class="percent"><?php if($sum_monthly_expense==""){
       echo "0";
       } else {
@@ -230,7 +246,7 @@ if (strlen($_SESSION['id']==0)) {
       $sum_yearly_expense=$result4['yearlyexpense'];
        ?>
       					<div class="panel-body easypiechart-panel">
-      						<h4>Current Year Expenses</h4>
+      						<h4>Current Year</h4>
       						<div class="easypiechart" id="easypiechart-red" data-percent="<?php echo $sum_yearly_expense;?>" ><span class="percent"><?php if($sum_yearly_expense==""){
       echo "0";
       } else {
@@ -272,6 +288,32 @@ if (strlen($_SESSION['id']==0)) {
 
       			</div>
 
+
+ <div class="col-xs-6 col-md-3">
+      <div class="panel panel-default">
+        <?php
+//
+$userid=$_SESSION['id'];
+$query5=mysqli_query($conn,"select sum(amount)  as totalexpense from crowdfund where UserID='$userid';");
+$result5=mysqli_fetch_array($query5);
+$sum_total_expense=$result5['totalexpense'];
+?>
+        <div class="panel-body easypiechart-panel">
+          <h4>Total Crowdfund</h4>
+          <div class="easypiechart" id="easypiechart-red" data-percent="<?php echo $sum_total_expense;?>" ><span class="percent"><?php if($sum_total_expense==""){
+echo "0";
+} else {
+echo $sum_total_expense;
+}
+
+?></span></div>
+
+
+        </div>
+
+      </div>
+
+    </div>
 
       		</div>
 

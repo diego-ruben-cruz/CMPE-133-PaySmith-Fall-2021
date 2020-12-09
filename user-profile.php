@@ -119,7 +119,18 @@ if (strlen($_SESSION['id']==0)) {
 
 
 
+                <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
+                    <em class="fa fa-navicon">&nbsp;</em> Crowdfund <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                    </a>
+                    <ul class="children collapse" id="sub-item-3">
+                        <li><a class="" href="add-crowdfund.php">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Add Crowdfund
+                        </a></li>
+                        <li><a class="" href="manage-crowdfund.php">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Edit Crowdfund(s)
+                        </a></li>
 
+                    </ul>
 
                 <li><a href="user-profile.php"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
 

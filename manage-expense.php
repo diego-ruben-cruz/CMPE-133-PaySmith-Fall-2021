@@ -32,7 +32,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pay Smith || Manage Expense</title>
+	<title>Pay Smith || Edit Transaction(s)</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -63,9 +63,11 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
       </nav>
       <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
             <div class="profile-sidebar">
-                <div class="profile-userpic">
-                    <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
-                </div>
+                <!--
+                  <div class="profile-userpic">
+                  <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+              </div>
+              -->
                 <div class="profile-usertitle">
                     <?php
     $uid=$_SESSION['id'];
@@ -87,14 +89,14 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
 
                 <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-                    <em class="fa fa-navicon">&nbsp;</em>Expenses <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                    <em class="fa fa-navicon">&nbsp;</em>Transactions <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                     </a>
                     <ul class="children collapse" id="sub-item-1">
                         <li><a class="" href="add-expense.php">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Add Expenses
+                            <span class="fa fa-arrow-right">&nbsp;</span> Add Transaction
                         </a></li>
                         <li><a class="" href="manage-expense.php">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Manage Expenses
+                            <span class="fa fa-arrow-right">&nbsp;</span> Edit Transaction(s)
                         </a></li>
 
                     </ul>
@@ -102,24 +104,35 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
                 </li>
 
       <li class="parent "><a data-toggle="collapse" href="#sub-item-2">
-                    <em class="fa fa-navicon">&nbsp;</em>Expense Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                    <em class="fa fa-navicon">&nbsp;</em>Transaction Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                     </a>
                     <ul class="children collapse" id="sub-item-2">
                         <li><a class="" href="expense-datewise-reports.php">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Daywise Expenses
+                            <span class="fa fa-arrow-right">&nbsp;</span> Day-to-Day
                         </a></li>
                         <li><a class="" href="expense-monthwise-reports.php">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Monthwise Expenses
+                            <span class="fa fa-arrow-right">&nbsp;</span> Month-to-Month
                         </a></li>
                         <li><a class="" href="expense-yearwise-reports.php">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Yearwise Expenses
+                            <span class="fa fa-arrow-right">&nbsp;</span> Year-to-Year
                         </a></li>
 
                     </ul>
                 </li>
 
 
+                <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
+                    <em class="fa fa-navicon">&nbsp;</em> Crowdfund <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                    </a>
+                    <ul class="children collapse" id="sub-item-3">
+                        <li><a class="" href="add-crowdfund.php">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Add Crowdfund
+                        </a></li>
+                        <li><a class="" href="manage-crowdfund.php">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Edit Crowdfund(s)
+                        </a></li>
 
+                    </ul>
 
 
                 <li><a href="user-profile.php"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
@@ -136,7 +149,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Expense</li>
+				<li class="active">Transaction</li>
 			</ol>
 		</div><!--/.row-->
 
@@ -149,7 +162,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">Expense</div>
+					<div class="panel-heading">Transaction</div>
 					<div class="panel-body">
 						<p style="font-size:16px; color:red" align="center"> <?php if($msg){
     echo $msg;
