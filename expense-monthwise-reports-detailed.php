@@ -187,7 +187,7 @@ $cnt=$cnt+1;
 					</div>
 				</div><!-- /.panel-->
 			</div><!-- /.col-->
-			<?php include_once('includes/footer.php');?>
+
 		</div><!-- /.row -->
 	</div><!--/.main-->
 
