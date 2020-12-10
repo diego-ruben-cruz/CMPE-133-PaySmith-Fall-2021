@@ -62,9 +62,11 @@ if (strlen($_SESSION['id']==0)) {
       </nav>
       <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
             <div class="profile-sidebar">
-                <div class="profile-userpic">
-                    <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
-                </div>
+               <!--
+                  <div class="profile-userpic">
+                  <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+              </div>
+              -->
                 <div class="profile-usertitle">
                     <?php
     $uid=$_SESSION['id'];
@@ -120,7 +122,7 @@ if (strlen($_SESSION['id']==0)) {
 
 
                 <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
-                    <em class="fa fa-navicon">&nbsp;</em> Crowdfund <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                    <em class="fa fa-navicon">&nbsp;</em> Crowdfunds <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                     </a>
                     <ul class="children collapse" id="sub-item-3">
                         <li><a class="" href="add-crowdfund.php">
