@@ -103,19 +103,6 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
               </li>
 
-              <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
-                  <em class="fa fa-navicon">&nbsp;</em> Crowdfund <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-                  </a>
-                  <ul class="children collapse" id="sub-item-3">
-                      <li><a class="" href="add-crowdfund.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Add Crowdfund
-                      </a></li>
-                      <li><a class="" href="manage-crowdfund.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Edit Crowdfund(s)
-                      </a></li>
-
-                  </ul>
-
     <li class="parent "><a data-toggle="collapse" href="#sub-item-2">
                   <em class="fa fa-navicon">&nbsp;</em>Transaction Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                   </a>
@@ -133,7 +120,18 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
                   </ul>
               </li>
 
+              <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
+                  <em class="fa fa-navicon">&nbsp;</em> Crowdfund <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  </a>
+                  <ul class="children collapse" id="sub-item-3">
+                      <li><a class="" href="add-crowdfund.php">
+                          <span class="fa fa-arrow-right">&nbsp;</span> Add Crowdfund
+                      </a></li>
+                      <li><a class="" href="manage-crowdfund.php">
+                          <span class="fa fa-arrow-right">&nbsp;</span> Edit Crowdfund(s)
+                      </a></li>
 
+                  </ul>
 
 
 
