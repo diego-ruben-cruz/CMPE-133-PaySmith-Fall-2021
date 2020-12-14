@@ -174,9 +174,9 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
               <thead>
                 <tr>
                   <th>S.NO</th>
-                  <th>Expense Item</th>
-                  <th>Expense Cost</th>
-                  <th>Expense Date</th>
+                  <th>Transaction Item</th>
+                  <th>Transaction Amount</th>
+                  <th>Transaction Date</th>
                   <th>Action</th>
                 </tr>
               </thead>
