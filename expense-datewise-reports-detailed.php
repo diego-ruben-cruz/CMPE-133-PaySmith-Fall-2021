@@ -160,7 +160,7 @@ $rtype=$_POST['requesttype'];
                                             <tr>
               <th>S.NO</th>
               <th>Date</th>
-              <th>Expense Amount</th>
+              <th>Transaction Amount</th>
                 </tr>
                                         </tr>
                                         </thead>
