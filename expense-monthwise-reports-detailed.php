@@ -18,7 +18,7 @@ if (strlen($_SESSION['id']==0)) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PaySmith || Monthwise Expense Report</title>
+	<title>PaySmith || Month-to-Month Transaction Report</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -70,14 +70,14 @@ if (strlen($_SESSION['id']==0)) {
 
 
               <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-                  <em class="fa fa-navicon">&nbsp;</em>Expenses <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  <em class="fa fa-navicon">&nbsp;</em>Transactions <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                   </a>
                   <ul class="children collapse" id="sub-item-1">
                       <li><a class="" href="add-expense.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Add Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Add Transaction
                       </a></li>
                       <li><a class="" href="manage-expense.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Manage Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Edit Transaction(s)
                       </a></li>
 
                   </ul>
@@ -85,17 +85,17 @@ if (strlen($_SESSION['id']==0)) {
               </li>
 
     <li class="parent "><a data-toggle="collapse" href="#sub-item-2">
-                  <em class="fa fa-navicon">&nbsp;</em>Expense Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  <em class="fa fa-navicon">&nbsp;</em>Transaction Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                   </a>
                   <ul class="children collapse" id="sub-item-2">
                       <li><a class="" href="expense-datewise-reports.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Daywise Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Day-to-Day
                       </a></li>
                       <li><a class="" href="expense-monthwise-reports.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Monthwise Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Month-to-Month
                       </a></li>
                       <li><a class="" href="expense-yearwise-reports.php">
-                          <span class="fa fa-arrow-right">&nbsp;</span> Yearwise Expenses
+                          <span class="fa fa-arrow-right">&nbsp;</span> Year-to-Year
                       </a></li>
 
                   </ul>
@@ -128,7 +128,7 @@ if (strlen($_SESSION['id']==0)) {
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Monthwise Expense Report</li>
+				<li class="active">Month-to-Month Transaction Report</li>
 			</ol>
 		</div><!--/.row-->
 
@@ -151,7 +151,7 @@ $fdate=$_POST['fromdate'];
  $tdate=$_POST['todate'];
 $rtype=$_POST['requesttype'];
 ?>
-<h5 align="center" style="color:blue">Monthwise Expense Report from <?php echo $fdate?> to <?php echo $tdate?></h5>
+<h5 align="center" style="color:blue">Month-to-Month Transaction Report from <?php echo $fdate?> to <?php echo $tdate?></h5>
 <hr />
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
