@@ -33,7 +33,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pay Smith || Add Expense</title>
+	<title>PaySmith || Add Transaction</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -148,7 +148,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Expense</li>
+				<li class="active">Transaction</li>
 			</ol>
 		</div><!--/.row-->
 
@@ -161,7 +161,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">Expense</div>
+					<div class="panel-heading">Transaction</div>
 					<div class="panel-body">
 						<p style="font-size:16px; color:red" align="center"> <?php if($msg){
     echo $msg;
@@ -170,7 +170,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
 							<form role="form" method="post" action="">
 								<div class="form-group">
-									<label>Date of Expense</label>
+									<label>Date of Transaction</label>
 									<input class="form-control" type="date" value="" name="dateexpense" required="true">
 								</div>
 								<div class="form-group">
