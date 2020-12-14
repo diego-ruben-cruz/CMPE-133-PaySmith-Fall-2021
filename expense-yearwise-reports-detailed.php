@@ -86,7 +86,7 @@ if (strlen($_SESSION['id']==0)) {
               </li>
 
     <li class="parent "><a data-toggle="collapse" href="#sub-item-2">
-                  <em class="fa fa-navicon">&nbsp;</em>Transaction <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                  <em class="fa fa-navicon">&nbsp;</em>Transaction Report <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                   </a>
                   <ul class="children collapse" id="sub-item-2">
                       <li><a class="" href="expense-datewise-reports.php">
