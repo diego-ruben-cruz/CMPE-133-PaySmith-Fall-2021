@@ -141,7 +141,7 @@ if (strlen($_SESSION['id']==0)) {
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">Monthwise Expense Report</div>
+					<div class="panel-heading">Month-to-Month Transaction Report</div>
 					<div class="panel-body">
 
 						<div class="col-md-12">
