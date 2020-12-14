@@ -19,7 +19,7 @@ if(isset($_POST['submit']))
      $costitem=$_POST['costitem'];
     $query=mysqli_query($conn, "insert into transactions (UserID,date,item,cost) value('$userid','$dateexpense','$item','$costitem')");
 if($query){
-echo "<script>alert('Expense has been added');</script>";
+echo "<script>alert('Transaction has been added');</script>";
 echo "<script>window.location.href='manage-expense.php'</script>";
 } else {
 echo "<script>alert('Something went wrong. Please try again');</script>";
