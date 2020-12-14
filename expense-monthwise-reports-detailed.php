@@ -159,7 +159,7 @@ $rtype=$_POST['requesttype'];
                                             <tr>
               <th>S.NO</th>
               <th>Month-Year</th>
-              <th>Expense Amount</th>
+              <th>Transaction Amount</th>
                 </tr>
                                         </tr>
                                         </thead>
